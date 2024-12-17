@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px ;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav h1 {
+            color: wheat;
+            font-family: cursive;
+            font-size: 10px;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 10 px;
+            margin-left: 500px;
+            padding: 16px;
+            border: 1px solid white;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+
+        }
+        nav a:hover {
+            background-color: #806d21;
+            color: rgb(254, 253, 253);
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                text-align: left;
+                padding: 20px;
+            }
+            nav h1 {
+                font-size: 18px; 
+            }
+            nav a {
+                font-size: 10px; 
+                padding: 8px;
+                margin: 5px 0; 
+            }
+        }
+
+         @media (max-width: 767px) {
+            nav {
+                display: flex; 
+                justify-content: space-between; 
+                padding: 15px;
+                text-align: center; 
+            }
+
+            nav h1 {
+                text-align: left;
+                font-size: 20px; 
+                margin-bottom: 0;
+            }
+
+            nav a {
+                display: inline-block; 
+                font-size: 8px;
+                padding: 10px;
+                text-align: center;
+                width: auto; 
+                margin: 0 10px; 
+                border-radius: 5px; 
+            }
+
+            nav a:hover {
+                background-color: #806d21;
+                border: none; 
+            }
+        } 
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 10px;
+            }
+
+            nav h1 {
+                font-size: 16px; 
+            }
+
+            nav a {
+                font-size: 7px; 
+                padding: 5px;
+            }
+
+        }
+
+        header {
+            padding: 50px 10px;
+            background-color: black;
+            min-height: 100vh;
+            width: 100%;
+            color: white;
+            overflow: hidden; 
+        }
+
+        .image-container {
+            float: right;
+            width: 40%; 
+            text-align: center;
+            margin: 0 0 20px 20px;
+        }
+
+        .circular-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover; animation: slideInFromRight 2s ease-out forwards;
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        header img {
+            animation: slideInFromRight 1s ease-out forwards;
+        }
+
+        .header-content {
+            float: left;
+            width: 55%; 
+            text-align: left;
+        }
+
+        .animated-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-text {
+    font-size: 1rem;
+    color: #DDD;
+    line-height: 1.8;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    animation: slideInFromLeft 2s ease-out forwards;
+    opacity: 0; 
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%); 
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0); 
+        opacity: 1;
+    }
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+}
+        .about-me-btn {
+            background-color: rgb(28, 116, 116);
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .about-me-btn:hover {
+            background-color: #E64A19;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                display: block;
+                text-align: center;
+            }
+
+            .image-container, 
+            .header-content {
+                float: none;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .image-container {
+                margin-bottom: 20px;
+            }
+        }
+        .animated-text {
+            font-size: 2rem; 
+            font-weight: bold;
+            white-space: nowrap; 
+          }
+
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            vertical-align: middle; 
+            border-right: 3px solid #fff;
+            animation: typing 1s steps(20, end), blink-caret 0.75s step-end infinite;
+        font-family: cursive;
+    color: aqua;   }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 65%;
+            }
+        }
+
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Media query for laptops and tablets */
+        @media (max-width: 1024px) {
+            .animated-text {
+                font-size: 1.6rem; 
+              }
+
+            .typing-text {
+                animation: typing 5s steps(25, end) infinite, blink-caret 0.75s step-end infinite; 
+            }
+        }
+
+        /* Media query for extra small devices (e.g., smartphones) */
+        @media (max-width: 480px) {
+            .animated-text {
+                font-size: 1.2rem; 
+            }
+
+            .typing-text {
+                animation: typing 6s steps(20, end) infinite, blink-caret 0.75s step-end infinite; 
+            }
+        }
+     
+.section9 {
+    padding: 10px;
+    height: 800px;
+    width: 100%;
+}
+
+/* Skills Section */
+.skills {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-height: 710px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skill-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.skill-card {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    width: calc(33.33% - 20px);
+    padding: 20px;
+    margin: 10px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skill-card img {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 15px;
+}
+
+.skill-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 100%;
+    border-radius: 5px;
+    width: 0;
+    transition: width 1s ease-in-out;
+}
+
+
+.skill-card:hover {
+    background-color: gray;
+    transform: scale(1.09);
+    color: white;
+}
+
+.skill-card:hover .progress {
+    width: var(--progress-width);
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px; 
+    }
+
+    .skill-card {
+        width: 100%; 
+        height: auto; 
+        margin: 10px 0;
+    }
+
+    .section9 {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    section {
+        height: auto; 
+        padding: 20px; 
+        background-color: #333;
+    }
+
+    /* Certificates Section */
+    .certificates-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .certificate-card {
+        width: 90%; 
+        margin: 10px 0; 
+    }
+
+    .certificate-card img {
+        height: 120px;
+    }
+
+    .certificate-card h3 {
+        font-size: 16px;
+    }
+
+    .certificate-card p {
+        font-size: 12px;
+    }
+}
+
+/* For medium screens (Tablets and smaller desktops) */
+@media (max-width: 768px) {
+    .skill-card {
+        width: calc(50% - 20px);
+       }
+}
+
+/* For larger screens (Desktops) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 40px;
+    }
+
+    .skill-card {
+        width: calc(33.33% - 20px); /* Three cards per row */
+        height: 250px;
+        padding: 30px;
+    }
+
+    .section9 {
+        height: auto; 
+        padding-bottom: 20px;
+    }
+}
+
+/* For extra-large screens (Wide desktops) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1900px;
+    }
+
+    .skill-card {
+        width: calc(33.33% - 20px);
+        height: 180px;
+        padding: 35px;
+    }
+
+    .section9 {
+        height: 400px; /* Adjust height */
+        padding-bottom: 20px;
+    }
+}
+
+/* Certificates Section */
+.certificates-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.certificate-card {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px);
+}
+
+.certificate-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.certificate-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.certificate-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* For small screens (Mobile phones) */
+@media (max-width: 480px) {
+    .certificates-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .certificate-card {
+        width: 90%; 
+        margin: 10px 0;
+    }
+
+    .certificate-card img {
+        height: 120px; 
+    }
+
+    .certificate-card h3 {
+        font-size: 16px; 
+    }
+
+    .certificate-card p {
+        font-size: 12px; 
+    }
+}
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer .footer-content p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+footer .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .footer-content a:hover {
+    color: #FF5722; 
+}
+
+/* Responsive Styles for Footer */
+@media (max-width: 480px) {
+    footer .footer-content p {
+        font-size: 12px; 
+    }
+
+    footer .footer-content a {
+        font-size: 14px; 
+    }
+}
+
+.view-image-btn {
+    background-color: #FF5722; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 9px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.view-image-btn:hover {
+    background-color: #E64A19; 
+}
+
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Koushika Ravindran❤️</h1>
+        <div>
+            <a href="#HOME">HOME</a>
+            <a href="#ARTICLE">ARTICLE</a>
+            <a href="#ABOUTME">ABOUT ME</a>
+            <a href="#CONTACTME">CONTACT ME</a>
+        </div>
+    </nav>
+    <header id="HOME">
+        <div class="header-container">
+            <div class="image-container"><br><br><br><br>
+                <img src="./images/Screenshot 2024-02-01 005548_edited.jpg" alt="Portfolio Image" width="500" height="600" class="circular-image" />
+            </div>
+            <div class="header-content"><br><br><br>
+                <h2 class="animated-text">Heyyy, this is <span class="typing-text">KoushikaRavindran❤️</span></h2>
+                <p class="intro-text">
+                    I am a passionate web and full-stack developer who transforms ideas into digital experiences. With expertise in both frontend and backend development, I specialize in creating websites that blend innovative design with robust functionality. My work reflects a commitment to crafting sleek user interfaces, optimizing performance, and ensuring seamless usability. From dynamic single-page applications to comprehensive platforms, I bring creativity and precision to every project. Driven by a love for technology and problem-solving, I strive to deliver solutions that inspire and leave a lasting impact. Let’s collaborate and build something amazing together! 🌟
+                </p>
+                <button class="about-me-btn">Learn More About Me</button>
+            </div>
+        </div>
+    </header>
+    <div class="section9">
+        <div class="container">
+            <!-- Skills Section -->
+            <section id="skills" class="skills">
+                <h2>My Skills</h2>
+                <div class="skill-cards">
+                    <div class="skill-card" style="--progress-width: 90%;">
+                        <img src="./images/pf logo 1.png" alt="HTML & CSS" height="40" width="40">
+                        <h3>HTML & CSS</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                        <p>Experienced in creating visually appealing designs using advanced <strong>HTML and CSS</strong></p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 80%;">
+                        <img src="./images/pf logo 2.png" alt="JavaScript">
+                        <h3>JavaScript</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 20%;"></div>
+                        </div>
+                        <p>Skilled in building dynamic and interactive user experiences using <strong>JavaScript</strong></p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 85%;">
+                        <img src="./images/pf logo7.jpg" alt="Java">
+                        <h3>Java</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%;"></div>
+                        </div>
+                        <p>Proficient in developing robust backend solutions and applications using <strong>Java</strong></p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 75%;">
+                        <img src="./images/pf logo 4.jpg" alt="Database">
+                        <h3>MY SQL & Database Management</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 55%;"></div>
+                        </div>
+                        <p>Experienced in designing and managing databases using <strong>MySQL</strong>.</p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 80%;">
+                        <img src="./images/pf logo 5.png" alt="Hibernate & JSP">
+                        <h3>Hibernate </h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 25%;"></div>
+                        </div>
+                        <p>Skilled in leveraging <strong>Hibernate</strong> ORM framework for efficient database operations.</p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 70%;">
+                        <img src="./images/pf logo 6.avif" alt="Web Design">
+                        <h3>Web Design</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                        <p>Transforming creative ideas into interactive<strong> websites </strong>that blend aesthetics with functionality.</p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 70%;">
+                        <img src="./images/pf logo 3.png" alt="Web Design">
+                        <h3>Servlet, Spring Boot</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                        Expert in building scalable, high-performance web applications using <strong>Servlets</strong> and <strong>Spring Boot</strong>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 70%;">
+                        <img src="./images/pf logo 8.jpg" alt="Web Design">
+                        <h3>React</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 50%;"></div>
+                        </div>
+                        <p>Building fast, scalable web apps with <strong>React</strong> through interactive, reusable components.</p>
+                    </div>
+                    <div class="skill-card" style="--progress-width: 70%;">
+                        <img src="./images/pf logo 7.jpg" alt="Web Design">
+                        <h3>JSP</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                        <p>Creating and Building dynamic web pages with <strong>JSP</strong> for efficient content delivery.</p>
+                    </div>
+                </div>
+                    <!-- Add additional skill cards here... -->
+                </div>
+            </section>
+        </div>
+    </div>
+    <section>
+
+<div class="certificates-container">
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png    " alt="Certificate 1">
+    <h3>Certificate 1</h3>
+    <p>Issuing Organization: XYZ University</p>
+    <p>Date: 2020</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 2">
+    <h3>Certificate 2</h3>
+    <p>Issuing Organization: ABC Institute</p>
+    <p>Date: 2022</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 5.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 3">
+    <h3>Certificate 3</h3>
+    <p>Issuing Organization: DEF College</p>
+    <p>Date: 2021</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 4">
+    <h3>Certificate 4</h3>
+    <p>Issuing Organization: GHI University</p>
+    <p>Date: 2020</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 5">
+    <h3>Certificate 5</h3>
+    <p>Issuing Organization: JKL Institute</p>
+    <p>Date: 2022</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 6">
+    <h3>Certificate 6</h3>
+    <p>Issuing Organization: MNO College</p>
+    <p>Date: 2021</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 7">
+    <h3>Certificate 7</h3>
+    <p>Issuing Organization: PQR University</p>
+    <p>Date: 2020</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 8">
+    <h3>Certificate 8</h3>
+    <p>Issuing Organization: STU Institute</p>
+    <p>Date: 2022</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    <div class="certificate-card">
+    <img src="./images/pf logo 1.png" alt="Certificate 9">
+    <h3>Certificate 9</h3>
+    <p>Issuing Organization: VWX College</p>
+    <p>Date: 2021</p>
+    <button class="view-image-btn" onclick="viewImage('./images/pf logo 1.png')">View Image</button>
+    </div>
+    
+    <script>
+        function viewImage(imageUrl) {
+    window.open(imageUrl, '_blank'); 
+}
+
+    </script>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+            <p>Follow us on 
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>, 
+                <a href="https://www.twitter.com" target="_blank">Twitter</a>, 
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>.
+            </p>
+        </div>
+    </footer>
+    
+</body>
+</html>
